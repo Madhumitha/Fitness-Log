@@ -5,6 +5,7 @@ const next = require("next");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const createError = require("http-errors");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -16,6 +17,8 @@ const clientDir = path.join(__dirname, "../client");
 // Database setup
 const db = require("./models");
 const PORT = process.env.PORT || 3000;
+
+// Routes
 
 app
   .prepare()
