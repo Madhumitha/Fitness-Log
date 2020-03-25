@@ -1,38 +1,19 @@
-import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Head from "next/head";
-import Header from "./header";
 
 const Layout = props => (
-  <>
+  <div>
     <Head>
-      <title>With Cookies</title>
+      <title>Fitness-log</title>
+      <link
+        rel="stylesheet"
+        href="https://bootswatch.com/4/cerulean/bootstrap.min.css"
+      />
     </Head>
-    <style jsx global>{`
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        color: #333;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-      }
-      .container {
-        max-width: 65rem;
-        margin: 1.5rem auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-    `}</style>
-    <Header />
-
-    <main>
-      <div className="container">{props.children}</div>
-    </main>
-  </>
+    <Navbar />
+    <div className="container">{props.children}</div>
+  </div>
 );
 
 export default Layout;
