@@ -5,9 +5,9 @@ function Footer(props) {
 
   return (
     <React.Fragment>
-      <footer>
+      <div className="fixed-bottom bg-dark text-white text center pt-3 pt-6">
         <p id="copyright">Copyright © Madhumitha {year}</p>
-      </footer>
+      </div>
     </React.Fragment>
   );
 }

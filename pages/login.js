@@ -22,7 +22,7 @@ const Login = () => {
       });
       if (response.status === 200) {
         const { token } = await response.json();
-        await login({ token });
+        login({ token });
       } else {
         console.log("Login failed.");
         // https://github.com/developit/unfetch#caveats
