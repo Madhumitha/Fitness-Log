@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 
-const Navbar = () => (
+const Navbar = ({ user, loading }) => (
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       FITNESS LOG
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarColor02"
-      aria-controls="navbarColor02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
@@ -35,11 +24,28 @@ const Navbar = () => (
             <a class="nav-link"> Map </a>
           </Link>
         </li>
+        {!loading &&
+          (user ? (
+            <>
+              <li class="nav-item">
+                <Link href="/advanced/ssr-profile">
+                  <a class="nav-link">Profile</a>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/api/logout">
+                  Logout
+                </a>
+              </li>
+            </>
+          ) : (
+            <li class="nav-item">
+              <a class="nav-link my-2 my-lg-0" href="/api/login">
+                Login
+              </a>
+            </li>
+          ))}
       </ul>
-
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-        Login / Signup
-      </button>
     </div>
   </nav>
 );

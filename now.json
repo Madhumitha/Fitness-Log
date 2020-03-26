@@ -1,0 +1,12 @@
+{
+  "build": {
+    "env": {
+      "AUTH0_DOMAIN": "madhumitha.auth0.com",
+      "AUTH0_CLIENT_ID": "AQwKHantbusi7r7LxtbAzuOiChJSfBTg",
+      "AUTH0_CLIENT_SECRET": "uM_VqHOh6OLSvYvI-urNI4QV9LBnC--ssZpduAsXOoFKXsfgx-TIMcqOfvjrGWvw",
+      "REDIRECT_URI": "http://localhost:3000/api/callback",
+      "POST_LOGOUT_REDIRECT_URI": "http://localhost:3000/",
+      "SESSION_COOKIE_SECRET": "7955324bc6e47ba8fdfdcd5f00ab5936"
+    }
+  }
+}
