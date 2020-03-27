@@ -14,16 +14,7 @@ const Navbar = ({ user, loading }) => (
             <a class="nav-link"> Home </a>
           </Link>
         </li>
-        <li class="nav-item">
-          <Link href="/fitness">
-            <a class="nav-link"> Fitness </a>
-          </Link>
-        </li>
-        <li class="nav-item">
-          <Link href="/map">
-            <a class="nav-link"> Map </a>
-          </Link>
-        </li>
+
         {!loading &&
           (user ? (
             <>
@@ -32,6 +23,17 @@ const Navbar = ({ user, loading }) => (
                   <a class="nav-link">Profile</a>
                 </Link>
               </li>
+              <li class="nav-item">
+                <Link href="/fitness">
+                  <a class="nav-link"> Fitness </a>
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link href="/map">
+                  <a class="nav-link"> Map </a>
+                </Link>
+              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="/api/logout">
                   Logout
