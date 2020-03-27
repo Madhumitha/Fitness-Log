@@ -13,7 +13,21 @@ function ProfileCard({ user }) {
         <br />
         <br />
         <h3>Nickname: {user.nickname}</h3>
-        <h2>Mail: {user.name}</h2>
+        <form>
+          <div class="form-group">
+            <label for="exampleSelect1">
+              <legend> Activities</legend>
+            </label>
+            <select class="form-control" id="exampleSelect1">
+              <option>Physical Activities</option>
+              <option>Mental Activities</option>
+            </select>
+            <br />
+            <button type="button" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </>
   );
