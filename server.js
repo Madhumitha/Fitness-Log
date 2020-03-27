@@ -4,6 +4,7 @@ const next = require("next");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+// Next framework 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -30,6 +31,7 @@ app
     // assets from the client
     server.use(express.static(`${clientDir}/public`));
 
+    // Connect to next framework
     server.get("*", (req, res) => {
       return handle(req, res);
     });
