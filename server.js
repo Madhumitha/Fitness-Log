@@ -3,9 +3,7 @@ const express = require("express");
 const next = require("next");
 const bodyParser = require("body-parser");
 const path = require("path");
-const cookieParser = require("cookie-parser");
-const httpProxy = require("http-proxy");
-const { parse } = require("url");
+
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -34,12 +32,6 @@ app
 
     server.get("*", (req, res) => {
       return handle(req, res);
-    });
-
-    server.get("/p/:id", (req, res) => {
-      const actualPage = "/post";
-      const queryParams = { id: req.params.id };
-      app.render(req, res, actualPage, queryParams);
     });
 
     db.sequelize.sync({ force: true }).then(() => {
