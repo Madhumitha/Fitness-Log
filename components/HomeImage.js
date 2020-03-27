@@ -5,6 +5,7 @@ function MyImage() {
       <style jsx>{`
         img {
           display: block;
+          padding-top: 0;
           margin-left: auto;
           margin-right: auto;
           width: 50%;

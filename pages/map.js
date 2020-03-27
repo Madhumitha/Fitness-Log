@@ -1,12 +1,26 @@
-import Layout from "../components/Layout";
-import Footer from "../components/Footer";
+import React from "react";
 
-const Map = () => (
-  <Layout>
-    <div>
-      <h1>Map shows the insights of people using it</h1>
-    </div>
-  </Layout>
-);
+import Layout from "../components/Layout";
+import { useFetchUser } from "../lib/user";
+
+function ProfileCard({ user }) {
+  return (
+    <>
+      <div>
+        <h3>Nickname: {user.nickname}</h3>
+      </div>
+    </>
+  );
+}
+
+const Map = () => {
+  const { user, loading } = useFetchUser({ required: true });
+
+  return (
+    <Layout user={user} loading={loading}>
+      {loading ? <>Loading...</> : <ProfileCard user={user} />}
+    </Layout>
+  );
+};
 
 export default Map;
