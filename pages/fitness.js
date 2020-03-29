@@ -18,12 +18,13 @@ function ProfileCard({ user }) {
             <label for="exampleSelect1">
               <legend> Activities</legend>
             </label>
+            <br />
             <select class="form-control" id="exampleSelect1">
               <option>Physical Activities</option>
               <option>Mental Activities</option>
             </select>
             <br />
-            <button type="button" class="btn btn-primary">
+            <button type="button" id="submitBtn" class="btn btn-primary">
               Submit
             </button>
           </div>
