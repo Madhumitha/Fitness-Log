@@ -18,7 +18,7 @@ module.exports = app => {
   // Delete a fitness with id
   router.delete("/:id", fitnesses.delete);
 
-  // Create a new fitness
+  // Delete all fitness log
   router.delete("/", fitnesses.deleteAll);
 
   app.use("/api/fitnesses", router);

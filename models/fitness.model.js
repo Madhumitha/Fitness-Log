@@ -1,19 +1,19 @@
-module.exports = (sequelize, DataTypes) => {
-  const Fitness = sequelize.define("fitness", {
+module.exports = (sequelize, Sequelize) => {
+  const Fitness = sequelize.define("fitnesses", {
     typeofFitness: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     description: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     },
     hoursSpent: {
-      type: DataTypes.INTEGER
+      type: Sequelize.INTEGER
     },
     date: {
-      type: DataTypes.DATE
+      type: Sequelize.DATE
     },
     message: {
-      type: DataTypes.STRING
+      type: Sequelize.STRING
     }
   });
 

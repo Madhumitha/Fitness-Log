@@ -6,8 +6,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new fitness log
 exports.create = (req, res) => {
   // Validate request
-
-  if (!req.body.typeofFitness) {
+  if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty"
     });
@@ -15,7 +14,6 @@ exports.create = (req, res) => {
   }
 
   // Create a fitness log
-
   const fitness = {
     typeofFitness: req.body.typeofFitness,
     description: req.body.description,
@@ -30,16 +28,17 @@ exports.create = (req, res) => {
       res.send(data);
     })
     .catch(err => {
+      console.log(err);
       res.status(500).send({
         message: err.message || "Some error occured while creating the Fitness Log "
       });
     });
 };
 
-// Retrieve all fitness log from the database.
+// Retrieve all fitness log from the da\tabase.
 exports.findAll = (req, res) => {
   const typeofFitness = req.query.typeofFitness;
-  let condition = { typeofFitness: { [Op.like]: `%${typeofFitness}%` } };
+  let condition = typeofFitness ? { typeofFitness: { [Op.like]: `%${typeofFitness}%` } } : null;
 
   Fitness.findAll({ where: condition })
     .then(data => {
@@ -55,7 +54,7 @@ exports.findAll = (req, res) => {
 // Find a single fitness log with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
+  console.log("id is : " + id);
   Fitness.findByPk(id)
     .then(data => {
       res.send(data);
@@ -93,46 +92,44 @@ exports.update = (req, res) => {
 };
 
 // Delete a fitness log with the specified id in the request
-exports.delete = (req, res) => {
-  exports.delete = (req, res) => {
-    const id = req.params.id;
 
-    Fitness.destroy({
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Fitness was deleted successfully!"
-          });
-        } else {
-          res.send({
-            message: `Cannot delete Fitness with id=${id}. Maybe Fitness was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete Fitness with id=" + id
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Fitness.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Fitness was deleted successfully!"
         });
+      } else {
+        res.send({
+          message: `Cannot delete Fitness with id=${id}. Maybe Fitness was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Fitness with id=" + id
       });
-  };
+    });
 };
 
 // Delete all fitness log from the database.
+
 exports.deleteAll = (req, res) => {
-  exports.deleteAll = (req, res) => {
-    Fitness.destroy({
-      where: {},
-      truncate: false
+  Fitness.destroy({
+    where: {},
+    truncate: false
+  })
+    .then(nums => {
+      res.send({ message: `${nums} Fitness were deleted successfully!` });
     })
-      .then(nums => {
-        res.send({ message: `${nums} Fitness were deleted successfully!` });
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: err.message || "Some error occurred while removing all fitness."
-        });
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while removing all fitness."
       });
-  };
+    });
 };
