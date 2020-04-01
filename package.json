@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "dev": "nodemon server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "export": "next export",
@@ -42,6 +42,7 @@
     "micro": "^9.3.4",
     "mysql2": "^2.1.0",
     "next": "^9.3.1",
+    "next-connect": "^0.6.1",
     "next-cookies": "^2.0.3",
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
