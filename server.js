@@ -33,12 +33,12 @@ app
     server.use(bodyParser.json());
 
     // Connect to next framework
-    // server.get("*", (req, res) => {
-    //   console.log("Server get log");
-    //   return handle(req, res);
-    // });
+    server.get("*", (req, res) => {
+      console.log("Server get log");
+      return handle(req, res);
+    });
 
-    // Test API routes  using POSTMAN
+    // Tested API routes  using POSTMAN
     require("./routes/fitness.routes")(server);
     console.log("I am here");
     db.sequelize.sync().then(() => {
