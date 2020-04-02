@@ -1,10 +1,10 @@
 import nextConnect from "next-connect";
-const fitnesses = require("../../../controllers/fitness.controller");
+const fit = require("../../../controllers/fitness.controller");
 const handler = nextConnect();
- 
+
 handler
-  .get(fitnesses.findAll)
-  .post(fitnesses.create)
-  .delete(fitnesses.deleteAll);
+  .get(fit.findAll)
+  .post(fit.create)
+  .delete(fit.deleteAll);
 
 export default handler;
