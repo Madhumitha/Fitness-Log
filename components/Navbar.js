@@ -24,7 +24,7 @@ const Navbar = ({ user, loading }) => (
                 </Link>
               </li>
               <li class="nav-item">
-                <Link href="/fitness">
+                <Link href="/advanced/fitness">
                   <a class="nav-link"> Fitness </a>
                 </Link>
               </li>

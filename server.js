@@ -40,6 +40,7 @@ app
 
     // Tested API routes  using POSTMAN
     require("./routes/fitness.routes")(server);
+
     console.log("I am here");
     db.sequelize.sync().then(() => {
       server.listen(PORT, () => {
