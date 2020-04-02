@@ -7,7 +7,8 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
 
-const fitnesses = require('./fitness.model');
+// Import model
+const fitnesses = require("./fitness.model");
 
 let sequelize;
 if (config.use_env_variable) {
@@ -16,6 +17,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// Add db object
 const db = {
   fitnesses: fitnesses(sequelize, Sequelize)
 };
