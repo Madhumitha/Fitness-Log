@@ -53,7 +53,7 @@ exports.findAll = (req, res) => {
 
 // Find a single fitness log with an id
 exports.findOne = (req, res) => {
-  const id = req.query.id;
+  const id = req.params.id;
   console.log("id is : " + id);
   Fitness.findByPk(id)
     .then(data => {
@@ -68,7 +68,7 @@ exports.findOne = (req, res) => {
 
 // Update a fitness log by the id in the request
 exports.update = (req, res) => {
-  const id = req.query.id;
+  const id = req.params.id;
 
   Fitness.update(req.body, {
     where: { id: id }
@@ -94,7 +94,7 @@ exports.update = (req, res) => {
 // Delete a fitness log with the specified id in the request
 
 exports.delete = (req, res) => {
-  const id = req.query.id;
+  const id = req.params.id;
 
   Fitness.destroy({
     where: { id: id }
@@ -124,8 +124,8 @@ exports.deleteAll = (req, res) => {
     where: {},
     truncate: false
   })
-    .then(nums => {
-      res.send({ message: `${nums} Fitness were deleted successfully!` });
+    .then(data => {
+      res.send({ message: `${data} Fitness were deleted successfully!` });
     })
     .catch(err => {
       res.status(500).send({
