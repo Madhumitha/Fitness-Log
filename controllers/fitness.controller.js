@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 
 // Retrieve all fitness log from the da\tabase.
 exports.findAll = (req, res) => {
-  const typeofFitness = req.query.typeofFitness;
+  const typeofFitness = req.params.typeofFitness;
   let condition = typeofFitness ? { typeofFitness: { [Op.like]: `%${typeofFitness}%` } } : null;
 
   Fitness.findAll({ where: condition })
