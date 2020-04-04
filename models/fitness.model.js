@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Fitness = sequelize.define("fitnesses", {
-    typeofFitness: {
+    typeOfFitness: {
       type: Sequelize.STRING
     },
     description: {
@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     message: {
       type: Sequelize.STRING
+    },
+    logged: {
+      type: Sequelize.BOOLEAN
     }
   });
 

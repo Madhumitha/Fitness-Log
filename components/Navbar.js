@@ -20,25 +20,19 @@ const Navbar = ({ user, loading }) => (
             <>
               <li class="nav-item">
                 <Link href="/advanced/ssr-profile">
-                  <a class="nav-link">Profile</a>
+                  <a class="nav-link"> Profile </a>
                 </Link>
               </li>
               <li class="nav-item">
-                <Link href="/api/fitnesses/physical">
-                  <a class="nav-link"> Physical Fitness </a>
+                <Link href="/log">
+                  <a class="nav-link"> View-Log </a>
                 </Link>
               </li>
               <li class="nav-item">
-                <Link href="/api/fitnesses/mental">
-                  <a class="nav-link"> Mental Fitness </a>
+                <Link href="/add">
+                  <a class="nav-link"> Add-Log </a>
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link href="/map">
-                  <a class="nav-link"> Insights</a>
-                </Link>
-              </li>
-
               <li class="nav-item">
                 <a class="nav-link" href="/api/logout">
                   Logout

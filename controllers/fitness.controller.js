@@ -15,16 +15,19 @@ exports.create = (req, res) => {
 
   // Create a fitness log
   const fitness = {
-    typeofFitness: req.body.typeofFitness,
+    typeOfFitness: req.body.typeOfFitness,
     description: req.body.description,
     hoursSpent: req.body.hoursSpent,
     date: req.body.date,
-    message: req.body.message
+    message: req.body.message,
+    logged: req.body.logged ? req.body.logged : false
   };
 
   // Save a fitness log
   Fitness.create(fitness)
+
     .then(data => {
+      console.log(data.typeOfFitness);
       res.send(data);
     })
     .catch(err => {
@@ -37,8 +40,9 @@ exports.create = (req, res) => {
 
 // Retrieve all fitness log from the da\tabase.
 exports.findAll = (req, res) => {
-  const typeofFitness = req.params.typeofFitness;
-  let condition = typeofFitness ? { typeofFitness: { [Op.like]: `%${typeofFitness}%` } } : null;
+  console.log("Here in get method");
+  const typeOfFitness = req.query.typeOfFitness;
+  let condition = typeOfFitness ? { typeOfFitness: { [Op.like]: `%${typeOfFitness}%` } } : null;
 
   Fitness.findAll({ where: condition })
     .then(data => {
@@ -92,7 +96,6 @@ exports.update = (req, res) => {
 };
 
 // Delete a fitness log with the specified id in the request
-
 exports.delete = (req, res) => {
   const id = req.params.id;
 
@@ -118,7 +121,6 @@ exports.delete = (req, res) => {
 };
 
 // Delete all fitness log from the database.
-
 exports.deleteAll = (req, res) => {
   Fitness.destroy({
     where: {},
@@ -130,6 +132,19 @@ exports.deleteAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message: err.message || "Some error occurred while removing all fitness."
+      });
+    });
+};
+
+// Find all logged Fitness
+exports.findAllLogged = (req, res) => {
+  Fitness.findAll({ where: { logged: true } })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || "Some error occured while retrieving log"
       });
     });
 };
